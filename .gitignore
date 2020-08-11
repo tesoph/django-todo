@@ -1,1 +1,5 @@
 venv/
+.coverage
+.gitignore
+.sqliterc
+workspace.code-workspace
