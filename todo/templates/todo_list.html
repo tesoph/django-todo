@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>To do</h1>
+    <table>
+        {% for item in items %}
+        <tr>
+          <td> {% if item.done %}
+              <strike>{{item.name}}</strike>
+              {% else %}
+              {{item.name}}
+              {% endif %}
+          </td>
+          <td>{{item.done}}</td>
+          <td> 
+            <form action="toggle/{{ item.id }}" method="POST"><input type="submit" value="Done">{% csrf_token %}</form>
+         </td>
+          <td> 
+             <form action="edit/{{ item.id }}" method="GET"><input type="submit" value="Edit">{% csrf_token %}</form>
+          </td>
+        </tr>
+        {% empty %}
+        <p>You have nothing in your to do list.</p>
+        {% endfor %}
+    </table>
+    <a href="add">Add an item</a>
+</body>
+
+</html>
