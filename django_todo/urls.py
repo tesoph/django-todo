@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from todo.views import get_todo_list, create_an_item, edit_an_item, toggle_status
-
+from accounts.views import index
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #r'^$'
@@ -25,7 +25,8 @@ urlpatterns = [
     #^ means start
     #$ means end, removing it means you can do /anything and it will work still 
     #url(r'^message/$', say_hello),
-    url(r'^$', get_todo_list),
+    url(r'^$', index),
+    url(r'^list$', get_todo_list),
     url(r'^add$', create_an_item),
     url(r'^edit/(?P<id>\d+)$', edit_an_item),
     url(r'^toggle/(?P<id>\d+)$', toggle_status),
