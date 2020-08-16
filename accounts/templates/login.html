@@ -6,7 +6,7 @@
     <title>Django auth</title>
 </head>
 <body>
-    <h1>Home</h1>
+    <h1>Login</h1>
     <nav>
         <ul>
             <li><a href="{% url 'login' %}">Login</a></li>
@@ -23,5 +23,13 @@
         {% endfor %}
     </div>
     {% endif %}
+    <br>
+    <div>
+        <form method="POST">
+            {% csrf_token %}
+            {{ login_form }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
 </body>
 </html>
